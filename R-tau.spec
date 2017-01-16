@@ -4,7 +4,7 @@
 #
 Name     : R-tau
 Version  : 0.0
-Release  : 24
+Release  : 25
 URL      : http://cran.r-project.org/src/contrib/tau_0.0-18.tar.gz
 Source0  : http://cran.r-project.org/src/contrib/tau_0.0-18.tar.gz
 Summary  : Text Analysis Utilities
@@ -28,9 +28,12 @@ lib components for the R-tau package.
 %setup -q -c -n tau
 
 %build
+export LANG=C
+export SOURCE_DATE_EPOCH=1484549928
 
 %install
 rm -rf %{buildroot}
+export SOURCE_DATE_EPOCH=1484549928
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -40,7 +43,7 @@ export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export LDFLAGS="$LDFLAGS  -Wl,-z -Wl,relro"
 mkdir -p %{buildroot}/usr/lib64/R/library
-R CMD INSTALL --install-tests --build  -l %{buildroot}/usr/lib64/R/library tau
+R CMD INSTALL --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} --build  -l %{buildroot}/usr/lib64/R/library tau
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
 export LANG=C
