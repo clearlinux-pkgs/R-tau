@@ -4,7 +4,7 @@
 #
 Name     : R-tau
 Version  : 0.0.19
-Release  : 29
+Release  : 30
 URL      : http://cran.r-project.org/src/contrib/tau_0.0-19.tar.gz
 Source0  : http://cran.r-project.org/src/contrib/tau_0.0-19.tar.gz
 Summary  : Text Analysis Utilities
@@ -28,12 +28,15 @@ lib components for the R-tau package.
 %setup -q -c -n tau
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1489129867
+export SOURCE_DATE_EPOCH=1492799667
 
 %install
 rm -rf %{buildroot}
-export SOURCE_DATE_EPOCH=1489129867
+export SOURCE_DATE_EPOCH=1492799667
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -49,7 +52,7 @@ R CMD INSTALL --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} --build  -l
 export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
 R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library tau
 
@@ -59,6 +62,7 @@ R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/lib
 /usr/lib64/R/library/tau/DESCRIPTION
 /usr/lib64/R/library/tau/INDEX
 /usr/lib64/R/library/tau/Meta/Rd.rds
+/usr/lib64/R/library/tau/Meta/features.rds
 /usr/lib64/R/library/tau/Meta/hsearch.rds
 /usr/lib64/R/library/tau/Meta/links.rds
 /usr/lib64/R/library/tau/Meta/nsInfo.rds
