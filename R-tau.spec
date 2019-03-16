@@ -4,7 +4,7 @@
 #
 Name     : R-tau
 Version  : 0.0.21
-Release  : 53
+Release  : 54
 URL      : https://cran.r-project.org/src/contrib/tau_0.0-21.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/tau_0.0-21.tar.gz
 Summary  : Text Analysis Utilities
