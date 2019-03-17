@@ -4,7 +4,7 @@
 #
 Name     : R-tau
 Version  : 0.0.21
-Release  : 54
+Release  : 55
 URL      : https://cran.r-project.org/src/contrib/tau_0.0-21.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/tau_0.0-21.tar.gz
 Summary  : Text Analysis Utilities
@@ -32,10 +32,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552069811
+export SOURCE_DATE_EPOCH=1552801073
 
 %install
-export SOURCE_DATE_EPOCH=1552069811
+export SOURCE_DATE_EPOCH=1552801073
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -71,8 +71,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library tau|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  tau || :
 
 
 %files
@@ -98,10 +97,14 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/tau/help/tau.rdx
 /usr/lib64/R/library/tau/html/00Index.html
 /usr/lib64/R/library/tau/html/R.css
-/usr/lib64/R/library/tau/libs/symbols.rds
+/usr/lib64/R/library/tau/tests/counting.R
+/usr/lib64/R/library/tau/tests/counting.Rout.save
+/usr/lib64/R/library/tau/tests/counting.Rout.save.latin1
+/usr/lib64/R/library/tau/tests/counting_useBytes.R
+/usr/lib64/R/library/tau/tests/counting_useBytes.Rout.save
+/usr/lib64/R/library/tau/tests/counting_useBytes.Rout.save.latin1
 
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/R/library/tau/libs/tau.so
 /usr/lib64/R/library/tau/libs/tau.so.avx2
-/usr/lib64/R/library/tau/libs/tau.so.avx512
