@@ -4,7 +4,7 @@
 #
 Name     : R-tau
 Version  : 0.0.21
-Release  : 63
+Release  : 64
 URL      : https://cran.r-project.org/src/contrib/tau_0.0-21.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/tau_0.0-21.tar.gz
 Summary  : Text Analysis Utilities
@@ -26,21 +26,22 @@ lib components for the R-tau package.
 
 %prep
 %setup -q -c -n tau
+cd %{_builddir}/tau
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1552929830
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1589558040
 
 %install
-export SOURCE_DATE_EPOCH=1552929830
+export SOURCE_DATE_EPOCH=1589558040
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -66,12 +67,12 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc  tau || :
+R CMD check --no-manual --no-examples --no-codoc tau || :
 
 
 %files
