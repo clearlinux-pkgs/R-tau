@@ -4,7 +4,7 @@
 #
 Name     : R-tau
 Version  : 0.0.23
-Release  : 71
+Release  : 72
 URL      : https://cran.r-project.org/src/contrib/tau_0.0-23.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/tau_0.0-23.tar.gz
 Summary  : Text Analysis Utilities
@@ -33,10 +33,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1608163210
+export SOURCE_DATE_EPOCH=1620764434
 
 %install
-export SOURCE_DATE_EPOCH=1608163210
+export SOURCE_DATE_EPOCH=1620764434
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -109,3 +109,4 @@ R CMD check --no-manual --no-examples --no-codoc tau || :
 %defattr(-,root,root,-)
 /usr/lib64/R/library/tau/libs/tau.so
 /usr/lib64/R/library/tau/libs/tau.so.avx2
+/usr/lib64/R/library/tau/libs/tau.so.avx512
